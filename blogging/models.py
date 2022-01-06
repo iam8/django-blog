@@ -2,10 +2,19 @@
 # UWPCE Course 3 - Internet Programming in Python
 # Django
 
+"""
+Model definitions for blogging app.
+"""
+
 from django.db import models
 from django.contrib.auth.models import User
 
+
 class Post(models.Model):
+
+    """
+    Definition of the model for posts.
+    """
 
     title = models.CharField(max_length=128)
     text = models.TextField(blank=True)
@@ -21,11 +30,16 @@ class Post(models.Model):
 
 class Category(models.Model):
 
+    """
+    Definition of the model for categories.
+    """
+
     name = models.CharField(max_length=128)
     description = models.TextField(blank=True)
     posts = models.ManyToManyField(Post, blank=True, related_name="categories")
 
     class Meta:
+
         verbose_name_plural = "Categories"
 
     def __str__(self):

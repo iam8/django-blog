@@ -2,6 +2,10 @@
 # UWPCE Course 3 - Internet Programming in Python
 # Django
 
+"""
+Code for the views for the blogging app.
+"""
+
 from django.shortcuts import render
 from django.http import Http404
 
@@ -9,6 +13,10 @@ from blogging.models import Post
 
 
 def list_view(request):
+
+    """
+    List view of posts for the blogging app. Only published posts will be listed.
+    """
 
     published = Post.objects.exclude(published_date__exact=None)
     posts = published.order_by("-published_date")
@@ -18,12 +26,17 @@ def list_view(request):
 
 
 def detail_view(request, post_id):
+
+    """
+    Detail view of posts for the blogging app. Only published posts will have this view.
+    """
+
     published = Post.objects.exclude(published_date__exact=None)
 
     try:
         post = published.get(pk=post_id)
-    except Post.DoesNotExist:
-        raise Http404
+    except Post.DoesNotExist as err:
+        raise Http404 from err
 
     context = {"post": post}
 

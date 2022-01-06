@@ -1,8 +1,12 @@
-from django.urls import path
 # Ioana A Mititean
 # UWPCE Course 3 - Internet Programming in Python
 # Django
 
+"""
+URL patterns for blogging app.
+"""
+
+from django.urls import path
 from blogging.views import list_view, detail_view
 
 
