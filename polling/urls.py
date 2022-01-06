@@ -1,5 +1,14 @@
+# Ioana A Mititean
+# UWPCE Course 3 - Internet Programming in Python
+# Django
+
+"""
+URL patterns for polling app.
+"""
+
 from django.urls import path
 from polling.views import list_view, detail_view
+
 
 urlpatterns = [
     path("", list_view, name="poll_index"),

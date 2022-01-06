@@ -1,8 +1,19 @@
+# Ioana A Mititean
+# UWPCE Course 3 - Internet Programming in Python
+# Django
+
+"""
+Model definitions for polling app.
+"""
+
 from django.db import models
 
-# Create your models here.
 
 class Poll(models.Model):
+
+    """
+    Definition of the model for polls.
+    """
 
     title = models.CharField(max_length=128)
     text = models.TextField(blank=True)
