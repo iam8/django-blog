@@ -1,3 +1,7 @@
+# Ioana A Mititean
+# UWPCE Course 3 - Internet Programming in Python
+# Django
+
 from django.apps import AppConfig
 
 

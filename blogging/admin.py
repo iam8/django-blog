@@ -1,3 +1,7 @@
+# Ioana A Mititean
+# UWPCE Course 3 - Internet Programming in Python
+# Django
+
 from django.contrib import admin
 from blogging.models import Post, Category
 

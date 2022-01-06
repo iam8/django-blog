@@ -1,3 +1,7 @@
+# Ioana A Mititean
+# UWPCE Course 3 - Internet Programming in Python
+# Django
+
 import datetime
 
 from django.utils.timezone import utc

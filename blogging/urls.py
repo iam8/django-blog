@@ -1,4 +1,8 @@
 from django.urls import path
+# Ioana A Mititean
+# UWPCE Course 3 - Internet Programming in Python
+# Django
+
 from blogging.views import list_view, detail_view
 
 

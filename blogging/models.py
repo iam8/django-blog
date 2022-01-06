@@ -1,3 +1,7 @@
+# Ioana A Mititean
+# UWPCE Course 3 - Internet Programming in Python
+# Django
+
 from django.db import models
 from django.contrib.auth.models import User
 
