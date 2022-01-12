@@ -9,6 +9,8 @@ Code for the views for the polling app.
 from django.shortcuts import render
 from django.http import Http404
 from django.views.generic.list import ListView
+from django.views.generic.detail import DetailView
+
 
 from polling.models import Poll
 
@@ -19,6 +21,25 @@ class PollListView(ListView):
 
     model = Poll
     template_name = "polling/list.html"
+
+
+class PollDetailView(DetailView):
+
+    model = Poll
+    template_name = "polling/detail.html"
+
+    def post(self, request, *args, **kwargs):
+
+        poll = self.get_object()
+        if request.POST.get("vote") == "Yes":
+            poll.score += 1
+        else:
+            poll.score -= 1
+
+        poll.save()
+
+        context = {"object": poll}
+        return render(request, "polling/detail.html", context)
 
 #---------------------------------------------------------------------------------------------------
 
@@ -59,27 +80,27 @@ class PollListView(ListView):
 #    return render(request, "polling/list.html", context)
 
 
-def detail_view(request, poll_id):
-
-    """
-    Detail view of polls for the polling app.
-    """
-
-    try:
-        poll = Poll.objects.get(pk=poll_id)
-    except Poll.DoesNotExist as err:
-        raise Http404 from err
-
-    if request.method == "POST":
-        if request.POST.get("vote") == "Yes":
-            poll.score += 1
-        else:
-            poll.score -= 1
-
-        poll.save()
-
-    context = {"poll": poll}
-
-    return render(request, "polling/detail.html", context)
+#def detail_view(request, poll_id):
+#
+#    """
+#    Detail view of polls for the polling app.
+#    """
+#
+#    try:
+#        poll = Poll.objects.get(pk=poll_id)
+#    except Poll.DoesNotExist as err:
+#        raise Http404 from err
+#
+#    if request.method == "POST":
+#        if request.POST.get("vote") == "Yes":
+#            poll.score += 1
+#        else:
+#            poll.score -= 1
+#
+#        poll.save()
+#
+#    context = {"poll": poll}
+#
+#    return render(request, "polling/detail.html", context)
 
 #---------------------------------------------------------------------------------------------------
