@@ -24,8 +24,7 @@ class BlogListView(ListView):
 
     # TODO: filter Posts so only published ones are shown; use QuerySets
 
-    published = Post.objects.exclude(published_date__exact=None)
-    queryset = published.order_by("-published_date")
+    queryset = Post.objects.exclude(published_date__exact=None).order_by("-published_date")
     template_name = "blogging/list.html"
 
 
