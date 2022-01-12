@@ -42,25 +42,25 @@ class PollListView(ListView):
 #    return render(request, "polling/list.html", context)
 #
 #
-#def detail_view(request, poll_id):
-#
-#    """
-#    Detail view of polls for the polling app.
-#    """
-#
-#    try:
-#        poll = Poll.objects.get(pk=poll_id)
-#    except Poll.DoesNotExist as err:
-#        raise Http404 from err
-#
-#    if request.method == "POST":
-#        if request.POST.get("vote") == "Yes":
-#            poll.score += 1
-#        else:
-#            poll.score -= 1
-#
-#        poll.save()
-#
-#    context = {"poll": poll}
-#
-#    return render(request, "polling/detail.html", context)
+def detail_view(request, poll_id):
+
+    """
+    Detail view of polls for the polling app.
+    """
+
+    try:
+        poll = Poll.objects.get(pk=poll_id)
+    except Poll.DoesNotExist as err:
+        raise Http404 from err
+
+    if request.method == "POST":
+        if request.POST.get("vote") == "Yes":
+            poll.score += 1
+        else:
+            poll.score -= 1
+
+        poll.save()
+
+    context = {"poll": poll}
+
+    return render(request, "polling/detail.html", context)
