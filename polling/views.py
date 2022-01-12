@@ -7,10 +7,8 @@ Code for the views for the polling app.
 """
 
 from django.shortcuts import render
-from django.http import Http404
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
-
 
 from polling.models import Poll
 
@@ -19,16 +17,29 @@ from polling.models import Poll
 
 class PollListView(ListView):
 
+    """
+    List view class for polls.
+    """
+
     model = Poll
     template_name = "polling/list.html"
 
 
 class PollDetailView(DetailView):
 
+    """
+    Detail view class for polls.
+    """
+
     model = Poll
     template_name = "polling/detail.html"
 
     def post(self, request, *args, **kwargs):
+
+        """
+        POST method for poll detail view. A poll can be voted up or down by the user on that poll's
+        detail page.
+        """
 
         poll = self.get_object()
         if request.POST.get("vote") == "Yes":
