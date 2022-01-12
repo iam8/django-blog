@@ -12,36 +12,55 @@ from django.http import Http404
 from polling.models import Poll
 
 
-def list_view(request):
+class ListView():
 
-    """
-    List view of polls for the polling app.
-    """
+    def as_view(self):
 
-    context = {"polls": Poll.objects.all()}
+        return self.get
 
-    return render(request, "polling/list.html", context)
+    def get(self, request):
+
+        model_list_name = self.model.__name__.lower() + "_list"
+        context = {model_list_name: self.model.objects.all()}
+        return render(request, self.template_name, context)
 
 
-def detail_view(request, poll_id):
+class PollListView(ListView):
 
-    """
-    Detail view of polls for the polling app.
-    """
+    model = Poll
+    template_name = "polling/list.html"
 
-    try:
-        poll = Poll.objects.get(pk=poll_id)
-    except Poll.DoesNotExist as err:
-        raise Http404 from err
 
-    if request.method == "POST":
-        if request.POST.get("vote") == "Yes":
-            poll.score += 1
-        else:
-            poll.score -= 1
-
-        poll.save()
-
-    context = {"poll": poll}
-
-    return render(request, "polling/detail.html", context)
+#def list_view(request):
+#
+#    """
+#    List view of polls for the polling app.
+#    """
+#
+#    context = {"polls": Poll.objects.all()}
+#
+#    return render(request, "polling/list.html", context)
+#
+#
+#def detail_view(request, poll_id):
+#
+#    """
+#    Detail view of polls for the polling app.
+#    """
+#
+#    try:
+#        poll = Poll.objects.get(pk=poll_id)
+#    except Poll.DoesNotExist as err:
+#        raise Http404 from err
+#
+#    if request.method == "POST":
+#        if request.POST.get("vote") == "Yes":
+#            poll.score += 1
+#        else:
+#            poll.score -= 1
+#
+#        poll.save()
+#
+#    context = {"poll": poll}
+#
+#    return render(request, "polling/detail.html", context)
