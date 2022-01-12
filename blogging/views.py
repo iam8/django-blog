@@ -8,9 +8,30 @@ Code for the views for the blogging app.
 
 from django.shortcuts import render
 from django.http import Http404
+from django.views.generic.list import ListView
+from django.views.generic.detail import DetailView
 
 from blogging.models import Post
 
+# CLASS-BASED VIEWS --------------------------------------------------------------------------------
+
+class BlogListView(ListView):
+
+    """
+    List view class for blogging app.
+    """
+
+
+class BlogDetailView(DetailView):
+
+    """
+    Detail view class for blogging app.
+    """
+
+#---------------------------------------------------------------------------------------------------
+
+
+# FUNCTION-BASED VIEWS (OLD) -----------------------------------------------------------------------
 
 def list_view(request):
 
@@ -41,3 +62,5 @@ def detail_view(request, post_id):
     context = {"post": post}
 
     return render(request, "blogging/detail.html", context)
+
+#---------------------------------------------------------------------------------------------------
