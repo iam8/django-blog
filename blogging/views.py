@@ -13,26 +13,32 @@ from django.views.generic.detail import DetailView
 
 from blogging.models import Post
 
+
 # CLASS-BASED VIEWS --------------------------------------------------------------------------------
 
 class BlogListView(ListView):
 
     """
-    List view class for blogging app.
+    List view class for blogging app. Only published posts will be listed.
     """
 
+    # TODO: filter Posts so only published ones are shown; use QuerySets
+
+    published = Post.objects.exclude(published_date__exact=None)
+    queryset = published.order_by("-published_date")
     template_name = "blogging/list.html"
 
 
 class BlogDetailView(DetailView):
 
     """
-    Detail view class for blogging app.
+    Detail view class for blogging app. Only published posts will have a detail view.
     """
 
-    template_name = "blogging/detail.html"
+    # TODO: filter Posts so only published ones can have a detail view; use QuerySets
 
-    # No POST method required for blog post details (unlike poll detail).
+    queryset = Post.objects.exclude(published_date__exact=None)
+    template_name = "blogging/detail.html"
 
 #---------------------------------------------------------------------------------------------------
 
