@@ -21,12 +21,18 @@ class BlogListView(ListView):
     List view class for blogging app.
     """
 
+    template_name = "blogging/list.html"
+
 
 class BlogDetailView(DetailView):
 
     """
     Detail view class for blogging app.
     """
+
+    template_name = "blogging/detail.html"
+
+    # No POST method required for blog post details (unlike poll detail).
 
 #---------------------------------------------------------------------------------------------------
 
