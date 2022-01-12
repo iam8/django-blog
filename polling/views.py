@@ -8,28 +8,45 @@ Code for the views for the polling app.
 
 from django.shortcuts import render
 from django.http import Http404
+from django.views.generic.list import ListView
 
 from polling.models import Poll
 
 
-class ListView():
-
-    def as_view(self):
-
-        return self.get
-
-    def get(self, request):
-
-        model_list_name = self.model.__name__.lower() + "_list"
-        context = {model_list_name: self.model.objects.all()}
-        return render(request, self.template_name, context)
-
+# CLASS BASED VIEWS USING DJANGO -------------------------------------------------------------------
 
 class PollListView(ListView):
 
     model = Poll
     template_name = "polling/list.html"
 
+#---------------------------------------------------------------------------------------------------
+
+
+# LIST VIEW CLASSES FROM SCRATCH -------------------------------------------------------------------
+
+#class ListView():
+#
+#    def as_view(self):
+#
+#        return self.get
+#
+#    def get(self, request):
+#
+#        model_list_name = self.model.__name__.lower() + "_list"
+#        context = {model_list_name: self.model.objects.all()}
+#        return render(request, self.template_name, context)
+#
+#
+#class PollListView(ListView):
+#
+#    model = Poll
+#    template_name = "polling/list.html"
+
+#---------------------------------------------------------------------------------------------------
+
+
+# FUNCTION-BASED VIEWS -----------------------------------------------------------------------------
 
 #def list_view(request):
 #
@@ -40,8 +57,8 @@ class PollListView(ListView):
 #    context = {"polls": Poll.objects.all()}
 #
 #    return render(request, "polling/list.html", context)
-#
-#
+
+
 def detail_view(request, poll_id):
 
     """
@@ -64,3 +81,5 @@ def detail_view(request, poll_id):
     context = {"poll": poll}
 
     return render(request, "polling/detail.html", context)
+
+#---------------------------------------------------------------------------------------------------
