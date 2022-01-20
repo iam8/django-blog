@@ -7,3 +7,6 @@
 
 # VS Code
 .vscode/
+
+# Zip files
+*.zip
