@@ -14,13 +14,16 @@ from blogging.models import Post
 
 # CLASS-BASED VIEWS --------------------------------------------------------------------------------
 
+
 class BlogListView(ListView):
 
     """
     List view class for blogging app. Only published posts will be listed.
     """
 
-    queryset = Post.objects.exclude(published_date__exact=None).order_by("-published_date")
+    queryset = Post.objects.exclude(published_date__exact=None).order_by(
+        "-published_date"
+    )
     template_name = "blogging/list.html"
 
 
@@ -33,4 +36,5 @@ class BlogDetailView(DetailView):
     queryset = Post.objects.exclude(published_date__exact=None)
     template_name = "blogging/detail.html"
 
-#---------------------------------------------------------------------------------------------------
+
+# ---------------------------------------------------------------------------------------------------

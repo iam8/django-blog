@@ -15,5 +15,5 @@ class BloggingConfig(AppConfig):
     Configuration for blogging app.
     """
 
-    default_auto_field = 'django.db.models.BigAutoField'
-    name = 'blogging'
+    default_auto_field = "django.db.models.BigAutoField"
+    name = "blogging"
