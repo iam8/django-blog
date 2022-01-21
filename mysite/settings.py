@@ -43,6 +43,13 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "django.contrib.sites",
+
+    "allauth",
+    "allauth.account",
+    "allauth.socialaccount",
+    "allauth.socialaccount.providers.github",
+
     "polling",
     "blogging",
 ]
@@ -133,3 +140,12 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 # Login
 LOGIN_URL = "/login/"
 LOGIN_REDIRECT_URL = "/"
+
+# For login with social site
+AUTHENTICATION_BACKENDS = (
+    "django.contrib.auth.backends.ModelBackend",
+    "allauth.account.auth_backends.AuthenticationBackend",
+)
+
+SITE_ID = 1
+ACCOUNT_EMAIL_VERIFICATION = "none"
