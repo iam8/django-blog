@@ -15,6 +15,7 @@ from polling.models import Poll
 
 # CLASS BASED VIEWS USING DJANGO -------------------------------------------------------------------
 
+
 class PollListView(ListView):
 
     """
@@ -52,12 +53,13 @@ class PollDetailView(DetailView):
         context = {"object": poll}
         return render(request, "polling/detail.html", context)
 
-#---------------------------------------------------------------------------------------------------
+
+# ---------------------------------------------------------------------------------------------------
 
 
 # LIST VIEW CLASSES FROM SCRATCH -------------------------------------------------------------------
 
-#class ListView():
+# class ListView():
 #
 #    def as_view(self):
 #
@@ -70,17 +72,17 @@ class PollDetailView(DetailView):
 #        return render(request, self.template_name, context)
 #
 #
-#class PollListView(ListView):
+# class PollListView(ListView):
 #
 #    model = Poll
 #    template_name = "polling/list.html"
 
-#---------------------------------------------------------------------------------------------------
+# ---------------------------------------------------------------------------------------------------
 
 
 # FUNCTION-BASED VIEWS -----------------------------------------------------------------------------
 
-#def list_view(request):
+# def list_view(request):
 #
 #    """
 #    List view of polls for the polling app.
@@ -91,7 +93,7 @@ class PollDetailView(DetailView):
 #    return render(request, "polling/list.html", context)
 
 
-#def detail_view(request, poll_id):
+# def detail_view(request, poll_id):
 #
 #    """
 #    Detail view of polls for the polling app.
@@ -114,4 +116,4 @@ class PollDetailView(DetailView):
 #
 #    return render(request, "polling/detail.html", context)
 
-#---------------------------------------------------------------------------------------------------
+# ---------------------------------------------------------------------------------------------------

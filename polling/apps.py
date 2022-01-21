@@ -11,10 +11,9 @@ from django.apps import AppConfig
 
 class PollingConfig(AppConfig):
 
-
     """
     Configuration for polling app.
     """
 
-    default_auto_field = 'django.db.models.BigAutoField'
-    name = 'polling'
+    default_auto_field = "django.db.models.BigAutoField"
+    name = "polling"
