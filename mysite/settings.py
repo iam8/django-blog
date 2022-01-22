@@ -136,8 +136,7 @@ STATIC_URL = "static/"
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 # Login
-LOGIN_URL = "/login/"
-LOGIN_REDIRECT_URL = "/"
+# LOGIN_URL = "/login/"
 
 # For login with social site
 AUTHENTICATION_BACKENDS = (
@@ -147,3 +146,5 @@ AUTHENTICATION_BACKENDS = (
 
 SITE_ID = 1
 ACCOUNT_EMAIL_VERIFICATION = "none"
+
+LOGIN_REDIRECT_URL = "/"
